@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: transparent;
+}
+body {
+  background-color: transparent;
+}
+
+.surprise-bg {
+  background-image: url(./LA_Cafe_Images/Home/surprise-sec-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* .surprise-bg h1::before {
+  content: "";
+  background-image: url("./LA_Cafe_Images/Home/section-header-sep.png");
+  background-position:bottom center;
+  display: inline-block;
+  background-repeat: no-repeat;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+  position: absolute;
+  height: 34px;
+} */
