@@ -44,7 +44,7 @@ export default function Services() {
           <div key={index} className="inline-flex flex-col m-4 imgLoad">
             <div
               className="relative p-10 border h-w-72 w-72 overflow-hidden group"
-              style={{ backgroundImage: `url(${starsBg})` }}
+              // style={{ backgroundImage: `url(${starsBg})` }}
             >
               <img
                 src={data.img}
