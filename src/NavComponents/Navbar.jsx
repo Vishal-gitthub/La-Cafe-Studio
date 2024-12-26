@@ -34,7 +34,13 @@ export default function Navbar() {
       <div className="flex justify-between items-center px-6 py-4 text-white">
         {/* Logo */}
         <div className="w-20 h-20">
-          <img src={logo} alt="Logo" className="w-full h-full object-contain" />
+          <img
+            src={logo}
+            alt="Logo"
+            className={`w-full h-full object-contain ${
+              sticky ? "invert" : "invert-0"
+            }`}
+          />
         </div>
 
         {/* Desktop Links */}

@@ -6,6 +6,10 @@ import platePng from "../LA_Cafe_Images/Home/platePng.png";
 import Services from "./Home-components/Services";
 import ShineText from "./Home-components/Test";
 import Counters from "./Home-components/Counters";
+import Menu from "./Home-components/Menu";
+import Booking from "./Home-components/Booking";
+import Event from "./Home-components/Events";
+
 export default function Home() {
   return (
     <div>
@@ -29,6 +33,9 @@ export default function Home() {
       <Services />
       {/* <ShineText /> */}
       <Counters />
+      <Menu />
+      <Booking />
+      <Event />
     </div>
   );
 }
