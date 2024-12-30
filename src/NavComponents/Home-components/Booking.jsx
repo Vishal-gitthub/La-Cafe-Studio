@@ -17,30 +17,32 @@ export default function Booking() {
           <div className="flex flex-col gap-2 mt-20">
             <div className="flex justify-center items-center gap-6 my-1">
               <input
-                className="bg-white/25 px-4 py-2 w-2/5 text-white text-xl outline-none"
+                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
                 type="text"
                 placeholder="Enter Your Name"
               />
               <input
-                className="bg-white/25 px-4 py-2 w-2/5 text-white text-xl outline-none"
+                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
                 type="text"
                 placeholder="Enter Your Email"
               />
             </div>
             <div className="flex justify-center items-center gap-6 mb-4">
               <input
-                className="bg-white/25 px-4 py-2 w-2/5 text-white text-xl outline-none"
+                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
                 type="text"
                 placeholder="Enter Your Phone Number"
               />
               <input
-                className="bg-white/25 px-4 py-2 w-2/5 text-white text-xl outline-none"
+                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
                 type="text"
                 placeholder="Choose Table Number"
               />
             </div>
           </div>
-          <button className="bg-customGold bg-white/40 hover:bg-black/80 px-3 py-4 rounded-lg w-1/2 text-2xl text-black hover:text-white transition duration-300">Submit</button>
+          <button className="bg-customGold bg-white/40 hover:bg-black/80 px-3 py-4 rounded-lg w-1/3 text-2xl text-black hover:text-white transition duration-300">
+            Submit
+          </button>
         </div>
       </div>
     </div>

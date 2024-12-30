@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import veggies from "../../LA_Cafe_Images/Home/Menu-section-image/vegies_bottom.png";
-
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const menuName = [
   {
     name: "PORK SHRIMP MULTIGRAIN",
@@ -102,17 +104,41 @@ const menuName = [
   },
 ];
 
-export default function Menu() {
+export default function Menu({ showImage = true }) {
+  useEffect(() => {
+    // Create animation
+    const animation = gsap.fromTo(
+      ".menuBg",
+      {
+        opacity: 0,
+        y: "-100%",
+      },
+      {
+        opacity: 1,
+        y: "0%",
+        duration: 1,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: ".menuBg",
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Cleanup function
+    return () => {
+      animation.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []); // Empty dependency array
+
   return (
     <div>
-      <div className="py-20 text-center">
+      <div className="py-10 text-center">
         <div>
-          <h1 className="font-greatVibes text-8xl text-customGold max-sm:text-3xl max-md:text-5xl">
-            This Week Special
-          </h1>
-          <h3 className="py-4 font-raleway font-semibold text-2xl">
-            MENU CARD
-          </h3>
           <div className="relative">
             <div className="flex justify-center items-center py-10">
               <div className="gap-20 max-sm:gap-8 grid grid-cols-2 max-sm:grid-cols-1 px-5">
@@ -129,7 +155,7 @@ export default function Menu() {
                       />
                     </div>
                     <div className="text-left">
-                      <h1 className="font-semibold text-customGold text-lg max-sm:text-base">
+                      <h1 className="font-semibold text-base text-customGold max-sm:text-base">
                         {menu.name}
                       </h1>
                       <div className="font-medium text-gray-700/75 text-sm max-sm:text-xs">
@@ -145,11 +171,14 @@ export default function Menu() {
                 ))}
               </div>
             </div>
-            <img
-              className="-bottom-20 left-0 -z-[1] absolute w-full h-full object-cover"
-              src={veggies}
-              alt=""
-            />
+
+            {showImage && (
+              <img
+                className="-bottom-20 left-0 -z-[1] absolute w-full h-full menuBg object-cover"
+                src={veggies}
+                alt=""
+              />
+            )}
           </div>
         </div>
       </div>

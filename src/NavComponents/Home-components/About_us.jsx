@@ -7,7 +7,7 @@ export default function About_us() {
     <div>
       <div className="flex max-md:flex-col justify-center items-center px-72 py-16 max-sm:p-5 max-md:p-10 w-full">
         <div className="max-md:pb-5">
-          <h1 className="font-greatVibes text-8xl">About</h1>
+          <h1 className="font-greatVibes text-8xl text-customGold">About</h1>
           <div className="font-raleway">
             <h2 className="font-semibold text-5xl">
               we are the best quality and traditional restaurant

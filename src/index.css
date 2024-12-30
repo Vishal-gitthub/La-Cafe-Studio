@@ -15,15 +15,13 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-/* .surprise-bg h1::before {
-  content: "";
-  background-image: url("./LA_Cafe_Images/Home/section-header-sep.png");
-  background-position:bottom center;
-  display: inline-block;
-  background-repeat: no-repeat;
-  left: 0;
-  bottom: 0px;
-  right: 0;
-  position: absolute;
-  height: 34px;
-} */
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: white !important;
+  opacity: 0.3 !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #c59d5f !important;
+  opacity: 1 !important;
+}

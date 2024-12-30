@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import logo from "/logo-png-format.png";
-
+import { Link } from "react-router-dom";
 export default function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [sticky, setSticky] = useState(false);
 
   const Links = [
-    { navigate: "Home", to: "/" },
+    { navigate: " ", to: "/" },
     { navigate: "About", to: "/about" },
     { navigate: "Menu", to: "/menu" },
-    { navigate: "Services", to: "/services" },
     { navigate: "Gallery", to: "/gallery" },
     { navigate: "Contact", to: "/contact" },
   ];
@@ -34,25 +33,26 @@ export default function Navbar() {
       <div className="flex justify-between items-center px-6 py-4 text-white">
         {/* Logo */}
         <div className="w-20 h-20">
-          <img
-            src={logo}
-            alt="Logo"
-            className={`w-full h-full object-contain ${
-              sticky ? "invert" : "invert-0"
-            }`}
-          />
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Logo"
+              className={`w-full h-full object-contain ${
+                sticky ? "invert" : "invert-0"
+              }`}
+            />
+          </Link>
         </div>
 
         {/* Desktop Links */}
         <nav className="md:flex gap-6 hidden font-raleway font-semibold">
           {Links.map((link, index) => (
-            <a
+            <div
               key={index}
-              href={link.to}
               className="hover:text-blue-400 transition-colors duration-300"
             >
-              {link.navigate}
-            </a>
+              <Link to={link.to}>{link.navigate}</Link>
+            </div>
           ))}
         </nav>
 
@@ -89,14 +89,13 @@ export default function Navbar() {
       >
         <nav className="flex flex-col items-center gap-4 py-4">
           {Links.map((link, index) => (
-            <a
+            <div
               key={index}
-              href={link.to}
               className="hover:bg-white/10 py-3 w-full font-medium font-raleway text-center text-lg transition-colors duration-300"
               onClick={() => setToggleMenu(false)}
             >
-              {link.navigate}
-            </a>
+              <Link to={link.to}>{link.navigate}</Link>
+            </div>
           ))}
         </nav>
       </div>
