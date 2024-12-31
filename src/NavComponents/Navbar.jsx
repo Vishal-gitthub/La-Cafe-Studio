@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import logo from "/logo-png-format.png";
 import { Link } from "react-router-dom";
+
 export default function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [sticky, setSticky] = useState(false);
 
   const Links = [
-    { navigate: " ", to: "/" },
     { navigate: "About", to: "/about" },
     { navigate: "Menu", to: "/menu" },
     { navigate: "Gallery", to: "/gallery" },
@@ -26,8 +26,8 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        sticky ? "bg-black/80 backdrop-blur-sm" : "bg-transparent"
-      }`}
+        toggleMenu ? "bg-black/60" : ""
+      } ${sticky ? "bg-black/80" : ""}`}
     >
       {/* Navbar Container */}
       <div className="flex justify-between items-center px-6 py-4 text-white">
@@ -37,9 +37,9 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Logo"
-              className={`w-full h-full object-contain ${
-                sticky ? "invert" : "invert-0"
-              }`}
+              className={`w-full h-full object-contain transition-all ${
+                toggleMenu ? "invert" : ""
+              } ${sticky ? "invert" : ""}`}
             />
           </Link>
         </div>
@@ -47,12 +47,13 @@ export default function Navbar() {
         {/* Desktop Links */}
         <nav className="md:flex gap-6 hidden font-raleway font-semibold">
           {Links.map((link, index) => (
-            <div
+            <Link
               key={index}
-              className="hover:text-blue-400 transition-colors duration-300"
+              to={link.to}
+              className="hover:text-customGold transition duration-300"
             >
-              <Link to={link.to}>{link.navigate}</Link>
-            </div>
+              {link.navigate}
+            </Link>
           ))}
         </nav>
 
@@ -64,18 +65,18 @@ export default function Navbar() {
           aria-expanded={toggleMenu}
         >
           <div
-            className={`w-6 h-0.5 bg-white transform transition-all ${
+            className={`w-6 h-0.5 bg-white transition-transform ${
               toggleMenu ? "rotate-45 translate-y-2" : ""
             }`}
           ></div>
           <div
-            className={`w-6 h-0.5 bg-white transition-all ${
+            className={`w-6 h-0.5 bg-white transition-opacity ${
               toggleMenu ? "opacity-0" : "opacity-100"
             }`}
           ></div>
           <div
-            className={`w-6 h-0.5 bg-white transform transition-all ${
-              toggleMenu ? "-rotate-45 -translate-y-[0.3rem]" : ""
+            className={`w-6 h-0.5 bg-white transition-transform ${
+              toggleMenu ? "-rotate-45 -translate-y-2" : ""
             }`}
           ></div>
         </button>
@@ -83,19 +84,20 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute left-0 w-full bg-black/80 text-white overflow-hidden transition-all duration-500 ease-in-out ${
+        className={`absolute left-0 w-full text-white overflow-hidden transition-all duration-500 ease-in-out ${
           toggleMenu ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-        }`}
+        } ${sticky ? "bg-black/80" : "bg-black/60"}`}
       >
         <nav className="flex flex-col items-center gap-4 py-4">
           {Links.map((link, index) => (
-            <div
+            <Link
               key={index}
-              className="hover:bg-white/10 py-3 w-full font-medium font-raleway text-center text-lg transition-colors duration-300"
+              to={link.to}
+              className="hover:bg-white/10 py-3 w-full font-medium font-raleway text-center text-lg transition duration-300"
               onClick={() => setToggleMenu(false)}
             >
-              <Link to={link.to}>{link.navigate}</Link>
-            </div>
+              {link.navigate}
+            </Link>
           ))}
         </nav>
       </div>

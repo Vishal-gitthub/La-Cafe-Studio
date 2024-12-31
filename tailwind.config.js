@@ -9,9 +9,9 @@ export default {
         greatVibes: ["Great Vibes", "cursive"],
         lato: ["lato", "serif"],
       },
-      textColor:{
-        customGold:"#c59d5f"
-      }
+      colors: {
+        customGold: "#c59d5f",
+      },
     },
   },
   plugins: [],

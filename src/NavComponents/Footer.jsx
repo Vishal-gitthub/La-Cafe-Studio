@@ -1,6 +1,13 @@
 import React from "react";
 import ftrPot from "../LA_Cafe_Images/Home/ftr-link-ic.png";
-
+import { NavLink } from "react-router-dom";
+const links = [
+  { label: "HOME", to: "/" },
+  { label: "MENU", to: "/menu" },
+  { label: "ABOUT", to: "/about" },
+  { label: "GALLERY", to: "/gallery" },
+  { label: "CONTACT", to: "/contact" },
+];
 export default function Footer() {
   return (
     <footer className="w-full h-full">
@@ -22,7 +29,7 @@ export default function Footer() {
                 <a
                   key={icon}
                   href="#"
-                  className="flex justify-center items-center w-8 h-8 hover:text-orange-400 transition-colors"
+                  className="flex justify-center items-center w-8 h-8 hover:text-customGold transition-colors"
                 >
                   <i className={`text-xl fa-brands fa-${icon}`}></i>
                 </a>
@@ -37,11 +44,18 @@ export default function Footer() {
             </h1>
             <div className="bg-orange-400 mb-4 w-20 h-[2px]"></div>
             <div className="gap-2 grid">
-              {["HOME", "MENU", "ABOUT", "BLOG", "CONTACT"].map((link) => (
-                <div key={link} className="flex items-center gap-2 h-8">
+              {links.map((link, index) => (
+                <div key={index} className="flex items-center gap-2 h-8">
                   <img src={ftrPot} alt="" className="" />
-                  <p className="font-semibold text-base text-gray-800/80 hover:text-orange-400 transition-colors">
-                    {link}
+                  <p className="font-semibold text-base text-gray-800/80 hover:text-customGold transition-colors">
+                    <NavLink
+                      to={link.to}
+                      className={({ isActive }) =>
+                        isActive ? "text-customGold" : ""
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
                   </p>
                 </div>
               ))}
@@ -53,7 +67,7 @@ export default function Footer() {
             <h1 className="h-10 font-raleway font-semibold text-2xl">
               WORKING TIME
             </h1>
-            <div className="bg-orange-400 mb-4 w-20 h-[2px]"></div>
+            <div className="bg-customGold mb-4 w-20 h-[2px]"></div>
             <div className="gap-2 grid">
               {[
                 ["Monday - Tuesday", "09.00 - 22.00"],
@@ -65,9 +79,9 @@ export default function Footer() {
               ].map(([day, time]) => (
                 <div
                   key={day}
-                  className="flex items-center gap-5 h-8 font-lato font-semibold text-gray-800/80"
+                  className="flex items-center gap-5 h-8 font-lato font-semibold text-gray-800/80 shrink-0"
                 >
-                  <h3 className="w-32">{day}</h3>
+                  <h3 className="flex w-32 shrink-0">{day}</h3>
                   <span>--</span>
                   <h3>{time}</h3>
                 </div>

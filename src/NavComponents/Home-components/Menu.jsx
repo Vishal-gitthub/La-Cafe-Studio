@@ -111,7 +111,7 @@ export default function Menu({ showImage = true }) {
       ".menuBg",
       {
         opacity: 0,
-        y: "-100%",
+        y: "100%",
       },
       {
         opacity: 1,
@@ -133,7 +133,7 @@ export default function Menu({ showImage = true }) {
       animation.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []); // Empty dependency array
+  }, []);
 
   return (
     <div>
@@ -162,7 +162,7 @@ export default function Menu({ showImage = true }) {
                         {menu.description}
                       </div>
                     </div>
-                    <div className="flex justify-end max-sm:justify-start items-center">
+                    <div className="flex justify-end max-sm:justify-start items-center a">
                       <span className="font-bold font-raleway text-2xl text-customGold max-sm:text-xl">
                         ${menu.price}
                       </span>

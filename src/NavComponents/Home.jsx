@@ -82,7 +82,7 @@ export default function Home() {
           <Services />
           <Counters />
           <section className="pt-20 text-center">
-            <h1 className="font-greatVibes text-3xl text-customGold sm:text-5xl lg:text-8xl">
+            <h1 className="font-greatVibes text-4xl text-customGold sm:text-5xl lg:text-8xl">
               This Week Special
             </h1>
             <h3 className="py-4 font-raleway font-semibold text-2xl">

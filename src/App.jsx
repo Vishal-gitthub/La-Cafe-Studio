@@ -5,7 +5,7 @@ import Footer from "./NavComponents/Footer";
 import Loader from "./Loader";
 import Gallery from "./NavComponents/Gallery";
 import ScrollToTop from "./ScrollToTop";
-import Contact from "./NavComponents/Home-components/Contact";
+import Contact from "./NavComponents/Contact";
 // Lazy load components
 const Home = lazy(() => import("./NavComponents/Home"));
 const About = lazy(() => import("./NavComponents/About"));

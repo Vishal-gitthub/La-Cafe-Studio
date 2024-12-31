@@ -1,6 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import bookinBg from "../../LA_Cafe_Images/Home/Booking-section-image/booking-section-bg.jpg";
+
 export default function Booking() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    tableNumber: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, phone, tableNumber } = formData;
+
+    if (!name || !email || !phone || !tableNumber) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(phone)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
+    alert("Reservation submitted successfully!");
+  };
+
   return (
     <div>
       <div
@@ -14,35 +49,53 @@ export default function Booking() {
           <h3 className="py-5 font-semibold text-3xl text-white">
             MAKE A RESERVATION
           </h3>
-          <div className="flex flex-col gap-2 mt-20">
-            <div className="flex justify-center items-center gap-6 my-1">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-center gap-6 mt-20 px-4 w-full"
+          >
+            <div className="flex md:flex-row flex-col gap-6 w-full md:w-3/4">
               <input
-                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
+                className="bg-white px-4 py-3 rounded-md w-full text-base text-black outline-none"
                 type="text"
+                name="name"
                 placeholder="Enter Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
               />
               <input
-                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
-                type="text"
+                className="bg-white px-4 py-3 rounded-md w-full text-base text-black outline-none"
+                type="email"
+                name="email"
                 placeholder="Enter Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
               />
             </div>
-            <div className="flex justify-center items-center gap-6 mb-4">
+            <div className="flex md:flex-row flex-col gap-6 w-full md:w-3/4">
               <input
-                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
+                className="bg-white px-4 py-3 rounded-md w-full text-base text-black outline-none"
                 type="text"
+                name="phone"
                 placeholder="Enter Your Phone Number"
+                value={formData.phone}
+                onChange={handleInputChange}
               />
               <input
-                className="bg-white px-4 py-2 w-2/5 text-base text-black outline-none"
+                className="bg-white px-4 py-3 rounded-md w-full text-base text-black outline-none"
                 type="text"
+                name="tableNumber"
                 placeholder="Choose Table Number"
+                value={formData.tableNumber}
+                onChange={handleInputChange}
               />
             </div>
-          </div>
-          <button className="bg-customGold bg-white/40 hover:bg-black/80 px-3 py-4 rounded-lg w-1/3 text-2xl text-black hover:text-white transition duration-300">
-            Submit
-          </button>
+            <button
+              type="submit"
+              className="bg-customGold hover:bg-black/80 px-6 py-3 rounded-lg w-1/2 md:w-1/3 text-2xl text-black hover:text-white transition duration-300"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </div>
